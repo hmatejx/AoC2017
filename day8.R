@@ -2,7 +2,7 @@
 # = Day 8   =
 # ===========
 
-input8 <- read.table("input8.txt", as.is = T)[, -4]
+input8 <- read.table("inputs/input8.txt", as.is = T)[, -4]
 names(input8) <- c("reg", "cmd", "par", "cndreg", "cnd", "val")
 
 # Part 1 & 2
