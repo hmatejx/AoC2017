@@ -2,7 +2,7 @@
 # = Day 11  =
 # ===========
 
-input11 <- strsplit(readChar("input11.txt", file.size("input11.txt")), ",", fixed = T)[[1]]
+input11 <- strsplit(readChar("inputs/input11.txt", file.size("inputs/input11.txt")), ",", fixed = T)[[1]]
 
 # hex distance formula
 hex_distance <- function(a, b) {
