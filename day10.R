@@ -16,22 +16,24 @@ round <- function(input, state = list(string = 0:255, skip = 0, pos = 0)) {
   )
 }
 
-hash <- function(inputstr) {
+hash <- function(inputstr, binary = F) {
   inputlen <- c(as.numeric(charToRaw(inputstr)), 17, 31, 73, 47, 23)
   rnd <- list(string = 0:255, skip = 0, pos = 0)
   for (i in 1:64) rnd <- round(inputlen, rnd)
-  return(sparse2dense(rnd$string))
+  return(sparse2dense(rnd$string, binary))
 }
 
-sparse2dense <- function(string) {
-  res <- ""
-  for (i in 1:16) {
+sparse2dense <- function(string, binary) {
+  res <- sapply(1:16, function(i) {
     sparse <- as.raw(string[(16*(i - 1) + 1):(16*i)])
     dense <- sparse[1]
     for (j in 2:16) dense <- xor(dense, sparse[j])
-    res <- paste0(res, as.character(dense))
-  }
-  return(res)
+    dense
+  })
+  if (binary)
+    return(as.numeric(sapply(res, function(h) { rev(rawToBits(h)) })))
+  else
+    return(paste0(res, collapse = ""))
 }
 
 # part 1
