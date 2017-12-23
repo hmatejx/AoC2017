@@ -43,7 +43,7 @@ step <- function(prog) {
   ptr <<- ptr + jmp
 }
 
-# Day 1
+# Part 1
 ptr <- 1
 while (ptr > 0 && ptr <= length(input18) && state["rcv"] == 0) {
   step(input18)
