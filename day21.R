@@ -18,32 +18,49 @@ flip_h <- function(m) { apply(m, 1, rev) }
 rot_cw <- function(m) { t(apply(m, 2, rev)) }
 rot_ccw <- function(m) { apply(t(m), 2, rev) }
 
+# extend pattern list
+patterns <- list()
+j <- 1
+for (i in 1:length(input21)) {
+  p1 <- input21[[i]]$input; p2 <- rot_cw(p1); p3 <- rot_cw(rot_cw(p1)); p4 <- rot_ccw(p1)
+  p5 <- flip_v(p1); p6 <- rot_cw(p5); p7 <- rot_cw(rot_cw(p5)); p8 <- rot_ccw(p5)
+  patterns[[j]] <- list(dim = input21[[i]]$dim, input = p1, output = input21[[i]]$output); j <- j + 1
+  if (all(p2 == p1)) next
+  patterns[[j]] <- list(dim = input21[[i]]$dim, input = p2, output = input21[[i]]$output); j <- j + 1
+  if (all(p3 == p1) || all(p3 == p2)) next
+  patterns[[j]] <- list(dim = input21[[i]]$dim, input = p3, output = input21[[i]]$output); j <- j + 1
+  if (all(p4 == p1) || all(p4 == p2) || all(p4 == p3)) next
+  patterns[[j]] <- list(dim = input21[[i]]$dim, input = p4, output = input21[[i]]$output); j <- j + 1
+  if (all(p5 == p1) || all(p5 == p2) || all(p5 == p3) || all(p5 == p4)) next
+  patterns[[j]] <- list(dim = input21[[i]]$dim, input = p5, output = input21[[i]]$output); j <- j + 1
+  if (all(p6 == p1) || all(p6 == p2) || all(p6 == p3) || all(p6 == p4) || all(p6 == p5)) next
+  patterns[[j]] <- list(dim = input21[[i]]$dim, input = p6, output = input21[[i]]$output); j <- j + 1
+  if (all(p7 == p1) || all(p7 == p2) || all(p7 == p3) || all(p7 == p4) || all(p7 == p5) || all(p7 == p6)) next
+  patterns[[j]] <- list(dim = input21[[i]]$dim, input = p7, output = input21[[i]]$output); j <- j + 1
+  if (all(p8 == p1) || all(p8 == p2) || all(p8 == p3) || all(p8 == p4) || all(p8 == p5) || all(p8 == p6) || all(p8 == p7)) next
+  patterns[[j]] <- list(dim = input21[[i]]$dim, input = p8, output = input21[[i]]$output); j <- j + 1
+}
+
+
 # initial image
 image <- matrix(c(".", "#", ".",
                   ".", ".", "#",
                   "#", "#", "#"), nrow = 3, byrow = T)
 
-library(memoise)
 match <- function(part) {
   # find the matching rule (can be optimised)
   rule <- 0
-  for (i in 1:length(input21)) {
-    r <- input21[[i]]
+  for (i in 1:length(patterns)) {
+    r <- patterns[[i]]
     if (r$dim != nrow(part))
       next
-    p = r$input
-    p.flip <- flip_v(p)
-    if (all(part == p) || all(part == rot_cw(p)) ||
-        all(part == rot_cw(rot_cw(p))) || all(part == rot_ccw(p)) ||
-        all(part == p.flip) || all(part == rot_cw(p.flip)) ||
-        all(part == rot_cw(rot_cw(p.flip))) || all(part == rot_ccw(p.flip))) {
+    if (all(part == r$input)) {
       rule <- i
       break
     }
   }
-  input21[[rule]]$output
+  patterns[[rule]]$output
 }
-match <- memoise(match)
 
 iteration <- function() {
   # get rule size
