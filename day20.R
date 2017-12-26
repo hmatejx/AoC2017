@@ -24,13 +24,13 @@ tick <- function() {
   # remove colliding particles
   ind <- unique(c(which(dmat == 0, arr.ind = T)))
   if (length(ind) > 0) {
-    cat("Bang! Removing particles", ind, "\n")
+    cat("Bang! Removing particles", rownames(prtcls)[ind], "\n")
     prtcls <<- prtcls[-ind, ]
   }
   return(min(d))
 }
 
 repeat {
-  if (tick() > 1e4) break
+  if (tick() > 1e5) break
 }
 cat(nrow(prtcls), "\n")
