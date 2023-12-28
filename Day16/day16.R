@@ -2,7 +2,7 @@
 # = Day 16  =
 # ===========
 
-input16 <- strsplit(readChar("inputs/input16.txt", file.size("inputs/input16.txt")), ",", fixed = T)[[1]]
+input16 <- strsplit(readChar("input16.txt", file.size("input16.txt")), ",", fixed = T)[[1]]
 moves <- input16
 
 # initial state

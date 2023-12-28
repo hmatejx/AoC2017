@@ -2,7 +2,7 @@
 # = Day 18  =
 # ===========
 
-input18 <- strsplit(readChar("inputs/input18.txt", file.size("inputs/input18.txt")), "\r\n", fixed = T)[[1]]
+input18 <- strsplit(readChar("input18.txt", file.size("input18.txt")), "\r\n", fixed = T)[[1]]
 
 # extract registers
 regs <- unique(unlist(sapply(input18, function(i) {

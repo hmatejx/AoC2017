@@ -1,7 +1,7 @@
 # ===========
 # = Day 4   =
 # ===========
-eval(parse("inputs/input4.txt"))
+eval(parse("input4.txt"))
 wl <- strsplit(input4, "\\n")[[1]]
 
 # Part 1

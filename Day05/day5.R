@@ -2,7 +2,7 @@
 # = Day 5   =
 # ===========
 
-eval(parse("inputs/input5.txt"))
+eval(parse("input5.txt"))
 
 # Part 1
 jmps <- input5

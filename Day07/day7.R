@@ -4,7 +4,7 @@
 
 # Day 7
 ncols <- max(count.fields("input7.txt"))
-input7 <- read.table("inputs/input7.txt", header = F, fill = T, as.is = T, colClasses = rep("character", ncols))[, -3]
+input7 <- read.table("input7.txt", header = F, fill = T, as.is = T, colClasses = rep("character", ncols))[, -3]
 names(input7) <- c("pprog", "weight", paste0("cprog", 1:(ncols - 3)))
 input7$weight <- as.integer(gsub("\\(|\\)", "", input7$weight))
 for (col in paste0("cprog", 1:(ncols - 4))) {

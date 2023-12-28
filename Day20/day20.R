@@ -3,7 +3,7 @@
 # ===========
 
 input20 <- as.data.frame(
-  t(sapply(strsplit(readChar("inputs/input20.txt", file.size("inputs/input20.txt")), "\r\n")[[1]],
+  t(sapply(strsplit(readChar("input20.txt", file.size("input20.txt")), "\r\n")[[1]],
            function(line) { as.numeric(strsplit(gsub("p|v|a|=|<|>", "", line), ",")[[1]]) },
            USE.NAMES = F)))
 names(input20) <- paste0(rep(c("p", "v", "a"), each = 3), rep(c("x", "y", "z"), 3))

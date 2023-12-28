@@ -2,7 +2,7 @@
 # = Day 12  =
 # ===========
 
-input12 <- lapply(strsplit(readChar("inputs/input12.txt", file.size("inputs/input12.txt")), "\r\n")[[1]], 
+input12 <- lapply(strsplit(readChar("input12.txt", file.size("input12.txt")), "\r\n")[[1]], 
                   function(x) { 
                     y <- strsplit(x, " <-> ", fixed = T)[[1]]
                     pipes = as.numeric(strsplit(y[2], ", ", fixed = T)[[1]])

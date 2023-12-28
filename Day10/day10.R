@@ -2,8 +2,8 @@
 # = Day 10  =
 # ===========
 
-input10 <- list(len = as.numeric(read.csv("inputs/input10.txt", header = F)),
-                str = gsub("\r\n", "", readChar("inputs/input10.txt", file.size("inputs/input10.txt")), fixed = T))
+input10 <- list(len = as.numeric(read.csv("input10.txt", header = F)),
+                str = gsub("\r\n", "", readChar("input10.txt", file.size("input10.txt")), fixed = T))
 
 round <- function(input, state = list(string = 0:255, skip = 0, pos = 0)) {
   within(state,

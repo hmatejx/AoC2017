@@ -3,7 +3,7 @@
 # ===========
 
 # Day 9
-input9 <- read.table("inputs/input9.txt", as.is = T)[1, 1]
+input9 <- read.table("input9.txt", as.is = T)[1, 1]
 
 stream <- strsplit(input9, "")[[1]]
 

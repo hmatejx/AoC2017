@@ -4,7 +4,7 @@
 require(memoise)
 
 #input13 <- list(depth = c(0, 1, 4, 6), range = c(3, 2, 4, 4))
-input13 <- read.table("inputs/input13.txt", header = F, 
+input13 <- read.table("input13.txt", header = F, 
                       colClasses = c("character", "integer"), 
                       col.names = c("depth", "range"))
 input13[, 1] <- as.integer(gsub(":", "", input13[, 1], fixed = T))

@@ -2,7 +2,7 @@
 # = Day 21  =
 # ===========
 
-input21 <- lapply(strsplit(readChar("inputs/input21.txt", file.size("inputs/input21.txt")), "\r\n")[[1]],
+input21 <- lapply(strsplit(readChar("input21.txt", file.size("input21.txt")), "\r\n")[[1]],
                   function(line) { strsplit(gsub(" => ", " ", line), " ")[[1]] })
 input21 <- lapply(input21, function(rule) {
   tmp1 <- strsplit(strsplit(rule[1], "/", fixed = T)[[1]], "")
